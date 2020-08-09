@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CC90EA"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="207dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/team_A_name"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:textColor="#3F51B5"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/score_card_A"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:text="@string/zero"
+                android:textColor="#3F51B5"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/dot_A"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="#3F51B5"
+                android:text="@string/dot"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/single_A"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="#3F51B5"
+                android:text="@string/single"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/four_A"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="#3F51B5"
+                android:text="@string/four"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/six_A"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="#3F51B5"
+                android:text="@string/six"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/wicket_A"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="#3F51B5"
+                android:text="@string/wicket"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/extra_A"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="#3F51B5"
+                android:text="@string/extra"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="?android:attr/listDivider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/team_B_name"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:textColor="#3F51B5"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/score_card_B"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:text="@string/zero"
+                android:textColor="#3F51B5"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/dot_B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="#3F51B5"
+                android:text="@string/dot"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/single_B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="#3F51B5"
+                android:text="@string/single"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/four_B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="#3F51B5"
+                android:text="@string/four"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/six_B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="#3F51B5"
+                android:text="@string/six"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/wicket_B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="#3F51B5"
+                android:text="@string/wicket"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/extra_B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="#3F51B5"
+                android:text="@string/extra"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/reset_score"
+        android:layout_width="110dp"
+        android:layout_height="58dp"
+        android:background="#3F51B5"
+        android:text="@string/reset"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.19"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.56" />
+
+    <Button
+        android:id="@+id/restart_game"
+        android:layout_width="110dp"
+        android:layout_height="58dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginRight="72dp"
+        android:background="#3F51B5"
+        android:text="@string/restart"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.558" />
+</androidx.constraintlayout.widget.ConstraintLayout>

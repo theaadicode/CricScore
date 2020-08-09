@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Cricket Record</string>
+    <string name="teamA">Team A : </string>
+    <string name="teamB">Team B : </string>
+    <string name="submit">SUBMIT</string>
+    <string name="name">Name</string>
+    <string name="zero">0</string>
+    <string name="single">Single</string>
+    <string name="four">four</string>
+    <string name="six">six</string>
+    <string name="wicket">wicket</string>
+    <string name="extra">extra</string>
+    <string name="dot">dot</string>
+    <string name="reset">Reset</string>
+    <string name="restart">Restart</string>
+</resources>
