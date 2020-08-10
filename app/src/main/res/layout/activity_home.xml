@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CC90EA"
+    android:background="#25AA00FF"
     tools:context=".HomeActivity">
 
     <EditText
@@ -14,13 +14,13 @@
         android:layout_marginStart="33dp"
         android:layout_marginLeft="33dp"
         android:layout_marginTop="107dp"
-        android:background="#CC90EA"
+        android:background="#25AA00FF"
         android:ems="10"
         android:hint="@string/name"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText2"
@@ -29,13 +29,13 @@
         android:layout_marginStart="33dp"
         android:layout_marginLeft="33dp"
         android:layout_marginTop="89dp"
-        android:background="#CC90EA"
+        android:background="#25AA00FF"
         android:ems="10"
         android:hint="@string/name"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <TextView
         android:id="@+id/textView5"
@@ -68,7 +68,7 @@
         android:layout_marginStart="146dp"
         android:layout_marginLeft="146dp"
         android:layout_marginTop="87dp"
-        android:background="#7D5BAE"
+        android:background="#25AA00FF"
         android:text="@string/submit"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CC90EA"
+    android:background="#25AA00FF"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -49,7 +49,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
-                android:background="#3F51B5"
+                android:background="#25AA00FF"
                 android:text="@string/dot"
                 android:textSize="18sp" />
 
@@ -61,7 +61,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
-                android:background="#3F51B5"
+                android:background="#25AA00FF"
                 android:text="@string/single"
                 android:textSize="18sp" />
 
@@ -73,7 +73,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
-                android:background="#3F51B5"
+                android:background="#25AA00FF"
                 android:text="@string/four"
                 android:textSize="18sp" />
 
@@ -85,7 +85,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
-                android:background="#3F51B5"
+                android:background="#25AA00FF"
                 android:text="@string/six"
                 android:textSize="18sp" />
 
@@ -97,7 +97,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
-                android:background="#3F51B5"
+                android:background="#25AA00FF"
                 android:text="@string/wicket"
                 android:textSize="18sp" />
 
@@ -109,7 +109,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
-                android:background="#3F51B5"
+                android:background="#25AA00FF"
                 android:text="@string/extra"
                 android:textSize="18sp" />
 
@@ -154,7 +154,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
-                android:background="#3F51B5"
+                android:background="#25AA00FF"
                 android:text="@string/dot"
                 android:textSize="18sp" />
 
@@ -166,7 +166,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
-                android:background="#3F51B5"
+                android:background="#25AA00FF"
                 android:text="@string/single"
                 android:textSize="18sp" />
 
@@ -178,7 +178,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
-                android:background="#3F51B5"
+                android:background="#25AA00FF"
                 android:text="@string/four"
                 android:textSize="18sp" />
 
@@ -190,7 +190,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
-                android:background="#3F51B5"
+                android:background="#25AA00FF"
                 android:text="@string/six"
                 android:textSize="18sp" />
 
@@ -202,7 +202,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
-                android:background="#3F51B5"
+                android:background="#25AA00FF"
                 android:text="@string/wicket"
                 android:textSize="18sp" />
 
@@ -214,7 +214,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="10dp"
-                android:background="#3F51B5"
+                android:background="#25AA00FF"
                 android:text="@string/extra"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -224,7 +224,7 @@
         android:id="@+id/reset_score"
         android:layout_width="110dp"
         android:layout_height="58dp"
-        android:background="#3F51B5"
+        android:background="#25AA00FF"
         android:text="@string/reset"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -240,12 +240,11 @@
         android:layout_height="58dp"
         android:layout_marginEnd="72dp"
         android:layout_marginRight="72dp"
-        android:background="#3F51B5"
+        android:background="#25AA00FF"
         android:text="@string/restart"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.558" />
 </androidx.constraintlayout.widget.ConstraintLayout>
