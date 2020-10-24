@@ -1,19 +1,23 @@
 package com.aditya.cricketrecord;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 public class DataActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
-    private ScoreDBHelper dbHelper;
     SQLiteDatabase database;
+    Cursor cursor;
+    Resources resources;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,18 +25,21 @@ public class DataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_data);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Previous Match Record");
 
-        dbHelper = new ScoreDBHelper(this);
+        ScoreDBHelper dbHelper = new ScoreDBHelper(this);
         database = dbHelper.getReadableDatabase();
 
         recyclerView = findViewById(R.id.recycler);
 
-        layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        Cursor cursor = database.query(ScoreContract.ScoreEntry.TABLE_NAME,null,null,null,null,null,null);
+        cursor = database.query(ScoreContract.ScoreEntry.TABLE_NAME,null,null,null,null,null,null);
 
-        adapter = new ScoreAdapter(this,cursor);
+        resources = getResources();
+
+        adapter = new ScoreAdapter(this,cursor,resources);
         recyclerView.setAdapter(adapter);
     }
 
@@ -40,5 +47,27 @@ public class DataActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         finish();
         return super.onSupportNavigateUp();
+    }
+
+    public void reload(){
+        cursor = database.query(ScoreContract.ScoreEntry.TABLE_NAME,null,null,null,null,null,null);
+
+        adapter = new ScoreAdapter(this,cursor,resources);
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_data,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.refresh){
+            reload();
+            return true;
+        }
+        return false;
     }
 }

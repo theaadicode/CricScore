@@ -1,7 +1,5 @@
 package com.aditya.cricketrecord;
 
-import android.database.Cursor;
-
 public class Score {
     private int runs;
     private int balls;

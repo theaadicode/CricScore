@@ -38,7 +38,7 @@
                 android:layout_margin="20dp"
                 android:text="@string/zero"
                 android:textColor="#3F51B5"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
             <Button
                 android:id="@+id/dot_A"

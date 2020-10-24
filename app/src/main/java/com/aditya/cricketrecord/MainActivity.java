@@ -15,13 +15,18 @@ import android.widget.Toast;
 
 import com.aditya.cricketrecord.ScoreContract.ScoreEntry;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
     TextView teamAScoreCard,teamBScoreCard,teamAName,teamBName;
     Button singleForA,fourForA,sixForA,wickerOfA,extraA,singleForB,fourForB,sixForB,wickerOfB,extraB,resetScore,dotA,dotB,restartGame,saveGame;
     Score teamAScore,teamBScore;
     ScoreDBHelper dbHelper;
     SQLiteDatabase database;
-    String teamA,teamB;
+    String teamA,teamB,scoreA,scoreB;
+    int over;
+    boolean change = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Play Match");
 
         teamAScoreCard = findViewById(R.id.score_card_A);         teamBScoreCard = findViewById(R.id.score_card_B);
         teamAName = findViewById(R.id.team_A_name);               teamBName = findViewById(R.id.team_B_name);
@@ -46,13 +52,16 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         teamA = intent.getStringExtra("teamA");
         teamB = intent.getStringExtra("teamB");
+        over = intent.getIntExtra("over",1);
         teamAName.setText(teamA);
         teamBName.setText(teamB);
 
         teamAScore = new Score();
         teamBScore = new Score();
-        teamAScoreCard.setText("Runs : " + teamAScore.getRuns() + "\nBalls: " + teamAScore.getBalls() + "\nWickets: " + teamAScore.getWicket() + "\nFour: " + teamAScore.getFour() + "\nSix: " + teamAScore.getSix() + "\nExtras: " + teamAScore.getExtras());
-        teamBScoreCard.setText("Runs : " + teamBScore.getRuns() + "\nBalls: " + teamBScore.getBalls() + "\nWickets: " + teamBScore.getWicket() + "\nFour: " + teamBScore.getFour() + "\nSix: " + teamBScore.getSix() + "\nExtras: " + teamBScore.getExtras());
+        scoreA = getString(R.string.score,teamAScore.getRuns(),teamAScore.getBalls(),teamAScore.getWicket(),teamAScore.getFour(),teamAScore.getSix(),teamAScore.getExtras());
+        scoreB = getString(R.string.score,teamBScore.getRuns(),teamBScore.getBalls(),teamBScore.getWicket(),teamBScore.getFour(),teamBScore.getSix(),teamBScore.getExtras());
+        teamAScoreCard.setText(scoreA);
+        teamBScoreCard.setText(scoreB);
 
 
         dotA.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 teamAScore.balls();
                 displayA();
+                CheckForBallsA();
             }
         });
 
@@ -69,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 teamAScore.single();
                 teamAScore.balls();
                 displayA();
+                CheckForBallsA();
             }
         });
 
@@ -78,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 teamAScore.four();
                 teamAScore.balls();
                 displayA();
+                CheckForBallsA();
             }
         });
 
@@ -87,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 teamAScore.six();
                 teamAScore.balls();
                 displayA();
+                CheckForBallsA();
             }
         });
 
@@ -96,6 +109,8 @@ public class MainActivity extends AppCompatActivity {
                 teamAScore.wicket();
                 teamAScore.balls();
                 displayA();
+                checkForWicketA();
+                CheckForBallsA();
             }
         });
 
@@ -112,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 teamBScore.balls();
                 displayB();
+                CheckForBallsB();
             }
         });
 
@@ -121,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
                 teamBScore.single();
                 teamBScore.balls();
                 displayB();
+                CheckForBallsB();
             }
         });
 
@@ -130,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 teamBScore.four();
                 teamBScore.balls();
                 displayB();
+                CheckForBallsB();
             }
         });
 
@@ -139,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
                 teamBScore.six();
                 teamBScore.balls();
                 displayB();
+                CheckForBallsB();
             }
         });
 
@@ -148,6 +167,8 @@ public class MainActivity extends AppCompatActivity {
                 teamBScore.wicket();
                 teamBScore.balls();
                 displayB();
+                checkForWicketB();
+                CheckForBallsB();
             }
         });
 
@@ -169,8 +190,10 @@ public class MainActivity extends AppCompatActivity {
                             case DialogInterface.BUTTON_POSITIVE:
                                 teamAScore.reset();
                                 teamBScore.reset();
+                                change = false;
                                 displayA();
                                 displayB();
+                                doEnable();
                                 break;
                             case DialogInterface.BUTTON_NEGATIVE:
                                 break;
@@ -180,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 builder.setMessage("Are You Want to Reset Score?").setPositiveButton("Yes",dialogCLickListener)
                         .setNegativeButton("No",dialogCLickListener).show();
+
             }
         });
 
@@ -206,7 +230,15 @@ public class MainActivity extends AppCompatActivity {
         saveGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                change = false;
                 database = dbHelper.getWritableDatabase();
+
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = new Date();
+                String match_date = simpleDateFormat.format(date);
+                simpleDateFormat = new SimpleDateFormat("hh:mm a");
+                String match_time = simpleDateFormat.format(date);
+
 
                 ContentValues contentValues = new ContentValues();
                 contentValues.put(ScoreEntry.COLUMN_TEAM_A,teamA);
@@ -223,6 +255,8 @@ public class MainActivity extends AppCompatActivity {
                 contentValues.put(ScoreEntry.COLUMN_WICKET_B,teamBScore.getWicket());
                 contentValues.put(ScoreEntry.COLUMN_EXTRAS_A,teamAScore.getExtras());
                 contentValues.put(ScoreEntry.COLUMN_EXTRAS_B,teamBScore.getExtras());
+                contentValues.put(ScoreEntry.COLUMN_DATE,match_date);
+                contentValues.put(ScoreEntry.COLUMN_TIME,match_time);
 
                 long row = database.insert(ScoreEntry.TABLE_NAME, null, contentValues);
                 if(row == -1){
@@ -231,8 +265,10 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     Toast.makeText(getApplicationContext(),"Successfully Inserted!!",Toast.LENGTH_SHORT).show();
                 }
+                finish();
             }
         });
+
     }
 
     @Override
@@ -249,9 +285,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Do You Want to Go Back Without Saving Match?").setPositiveButton("Yes",dialogCLickListener)
-                .setNegativeButton("No",dialogCLickListener).show();
+        if(change) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Do You Want to Go Back Without Saving Match?").setPositiveButton("Yes", dialogCLickListener)
+                    .setNegativeButton("No", dialogCLickListener).show();
+        }
+        else{finish();}
         return super.onSupportNavigateUp();
     }
 
@@ -269,16 +308,76 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Do You Want to Go Back Without Saving Match?").setPositiveButton("Yes",dialogCLickListener)
-                .setNegativeButton("No",dialogCLickListener).show();
-
+        if(change) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Do You Want to Go Back Without Saving Match?").setPositiveButton("Yes", dialogCLickListener)
+                    .setNegativeButton("No", dialogCLickListener).show();
+        }
+        else{finish();}
     }
 
     protected void displayA(){
-        teamAScoreCard.setText("Runs : " + teamAScore.getRuns() + "\nBalls: " + teamAScore.getBalls() + "\nWickets: " + teamAScore.getWicket() + "\nFour: " + teamAScore.getFour() + "\nSix: " + teamAScore.getSix() + "\nExtras: " + teamAScore.getExtras() );
+        teamAScoreCard.setText(scoreA);
     }
     protected void displayB(){
-        teamBScoreCard.setText("Runs : " + teamBScore.getRuns() + "\nBalls: " + teamBScore.getBalls() + "\nWickets: " + teamBScore.getWicket() + "\nFour: " + teamBScore.getFour() + "\nSix: " + teamBScore.getSix() + "\nExtras: " + teamBScore.getExtras());
+        teamBScoreCard.setText(scoreB);
+    }
+    private void checkForWicketA(){
+        if(teamAScore.getWicket() >= 10) {
+            Toast.makeText(this,"Innings of "+teamA+" is End",Toast.LENGTH_SHORT).show();
+            singleForA.setEnabled(false);
+            fourForA.setEnabled(false);
+            sixForA.setEnabled(false);
+            wickerOfA.setEnabled(false);
+            extraA.setEnabled(false);
+            dotA.setEnabled(false);
+        }
+    }
+    private void checkForWicketB(){
+        if(teamBScore.getWicket() >= 10) {
+            Toast.makeText(this,"Innings of "+teamB+" is End",Toast.LENGTH_SHORT).show();
+            singleForB.setEnabled(false);
+            fourForB.setEnabled(false);
+            sixForB.setEnabled(false);
+            wickerOfB.setEnabled(false);
+            extraB.setEnabled(false);
+            dotB.setEnabled(false);
+        }
+    }
+    private void CheckForBallsA(){
+        if(teamAScore.getBalls() >= over*6) {
+            Toast.makeText(this,"Innings of "+teamA+" is End",Toast.LENGTH_SHORT).show();
+            singleForA.setEnabled(false);
+            fourForA.setEnabled(false);
+            sixForA.setEnabled(false);
+            wickerOfA.setEnabled(false);
+            extraA.setEnabled(false);
+            dotA.setEnabled(false);
+        }
+    }
+    private void CheckForBallsB(){
+        if(teamBScore.getBalls() >= over*6) {
+            Toast.makeText(this,"Innings of "+teamB+" is End",Toast.LENGTH_SHORT).show();
+            singleForB.setEnabled(false);
+            fourForB.setEnabled(false);
+            sixForB.setEnabled(false);
+            wickerOfB.setEnabled(false);
+            extraB.setEnabled(false);
+            dotB.setEnabled(false);
+        }
+    }
+    private void doEnable(){
+        singleForA.setEnabled(true);
+        fourForA.setEnabled(true);
+        sixForA.setEnabled(true);
+        wickerOfA.setEnabled(true);
+        extraA.setEnabled(true);
+        dotA.setEnabled(true);
+        singleForB.setEnabled(true);
+        fourForB.setEnabled(true);
+        sixForB.setEnabled(true);
+        wickerOfB.setEnabled(true);
+        extraB.setEnabled(true);
+        dotB.setEnabled(true);
     }
 }

@@ -13,4 +13,9 @@
     <string name="dot">dot</string>
     <string name="reset">Reset</string>
     <string name="restart">Restart</string>
+    <string name="boundary_set">%1$d/%2$d</string>
+    <string name="score">Runs : %1$d\nBalls: %2$d\nWickets: %3$d\nFour: %4$d\nSix: %5$d\nExtras: %6$d</string>
+    <string name="item">Item</string>
+    <string name="score_set">%1$d/%2$d(%3$d)</string>
+    <string name="overs">%1$d Overs</string>
 </resources>

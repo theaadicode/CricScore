@@ -36,7 +36,10 @@ public class ScoreDBHelper extends SQLiteOpenHelper {
                     ScoreEntry.COLUMN_WICKET_A + INTEGER + NOT_NULL + "," +
                     ScoreEntry.COLUMN_WICKET_B + INTEGER + NOT_NULL + "," +
                     ScoreEntry.COLUMN_EXTRAS_A + INTEGER + NOT_NULL + "," +
-                    ScoreEntry.COLUMN_EXTRAS_B + INTEGER + NOT_NULL + ");";
+                    ScoreEntry.COLUMN_EXTRAS_B + INTEGER + NOT_NULL + "," +
+                    ScoreEntry.COLUMN_DATE + TEXT + NOT_NULL + "," +
+                    ScoreEntry.COLUMN_TIME + TEXT + NOT_NULL + ");";
+
         db.execSQL(QUERY);
     }
 

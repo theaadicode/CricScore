@@ -20,7 +20,7 @@ public final class ScoreContract  {
         public static final String COLUMN_WICKET_B = "WicketB";
         public static final String COLUMN_EXTRAS_A = "ExtrasA";
         public static final String COLUMN_EXTRAS_B = "ExtrasB";
-
-
+        public static final String COLUMN_DATE = "Date";
+        public static final String COLUMN_TIME = "Time";
     }
 }
